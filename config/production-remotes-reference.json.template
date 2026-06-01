@@ -6,7 +6,7 @@
       "shortName": "tutorials",
       "longName": "Lean Tutorials",
       "updateFrequency": "always",
-      "sources": [{"local": "_tutorial-out/xref.json"}]
+      "sources": [{"local": "_out/html-single/xref.json"}]
     }
   }
 }
