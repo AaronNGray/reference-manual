@@ -228,7 +228,7 @@ jobs:
 
     deploy:
         name: Deploy release
-        runs-on: seld-runner ubuntu-latest
+        runs-on: self-hosted
         needs: [build]
         if: github.event_name == 'release'
         outputs:
@@ -287,7 +287,7 @@ jobs:
 
     preview:
         name: Deploy preview
-        runs-on: self-runner ubuntu-latest
+        runs-on: self-hosted
         needs: [build]
         if: github.event_name == 'push' && github.ref_name == 'nightly-testing'
         steps:
@@ -318,7 +318,7 @@ jobs:
 
     check-links:
         name: Check links
-        runs-on: self-runner ubuntu-latest
+        runs-on: self-hosted
         needs: [deploy]
         if: github.event_name == 'release'
         steps:
@@ -335,7 +335,7 @@ jobs:
 
     prose-lint:
         name: Check prose
-        runs-on: self-runner ubuntu-latest
+        runs-on: self-hosted
         needs: [build]
         steps:
             - uses: actions/checkout@v4
@@ -367,7 +367,7 @@ jobs:
 
     type-check-js:
         name: Check search JS code with TypeScript
-        runs-on: self-runner ubuntu-latest
+        runs-on: self-hosted
         needs: [build]
         steps:
             - uses: actions/checkout@v4
