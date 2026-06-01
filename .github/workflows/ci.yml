@@ -20,7 +20,7 @@ name: "Build and check HTML"
 jobs:
     build:
         name: Build site and generate HTML
-        runs-on: self-runner ubuntu-latest
+        runs-on: self-hosted
 
         steps:
             - name: Display usage limits
