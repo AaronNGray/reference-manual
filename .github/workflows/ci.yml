@@ -20,7 +20,7 @@ name: "Build and check HTML"
 jobs:
     build:
         name: Build site and generate HTML
-        runs-on: nscloud-ubuntu-22.04-amd64-8x16
+        runs-on: self-runner ubuntu-latest
 
         steps:
             - name: Display usage limits
@@ -227,7 +227,7 @@ jobs:
 
     deploy:
         name: Deploy release
-        runs-on: ubuntu-latest
+        runs-on: seld-runner ubuntu-latest
         needs: [build]
         if: github.event_name == 'release'
         outputs:
@@ -286,7 +286,7 @@ jobs:
 
     preview:
         name: Deploy preview
-        runs-on: ubuntu-latest
+        runs-on: self-runner ubuntu-latest
         needs: [build]
         if: github.event_name == 'push' && github.ref_name == 'nightly-testing'
         steps:
@@ -317,7 +317,7 @@ jobs:
 
     check-links:
         name: Check links
-        runs-on: ubuntu-latest
+        runs-on: self-runner ubuntu-latest
         needs: [deploy]
         if: github.event_name == 'release'
         steps:
@@ -334,7 +334,7 @@ jobs:
 
     prose-lint:
         name: Check prose
-        runs-on: ubuntu-latest
+        runs-on: self-runner ubuntu-latest
         needs: [build]
         steps:
             - uses: actions/checkout@v4
@@ -366,7 +366,7 @@ jobs:
 
     type-check-js:
         name: Check search JS code with TypeScript
-        runs-on: ubuntu-latest
+        runs-on: self-runner ubuntu-latest
         needs: [build]
         steps:
             - uses: actions/checkout@v4
